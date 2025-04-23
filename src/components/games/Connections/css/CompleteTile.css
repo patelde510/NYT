@@ -1,0 +1,10 @@
+.complete {
+    text-transform: uppercase;
+    border-radius: 10px;
+    width: 510px;
+    height: 80px;
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+}

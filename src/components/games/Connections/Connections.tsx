@@ -4,6 +4,8 @@ import "./css/connections.css";
 import Button from "../../ui/Button";
 import CompleteTile from "./CompleteTile";
 
+
+// Shuffle the array given
 function shuffleArray(array: string[]) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -14,11 +16,14 @@ function shuffleArray(array: string[]) {
 }
 
 function Connections() {
+
+    // Store correct answers
   const yellowWords = ["Python", "Java", "C", "TypeScript"];
   const greenWords = ["BMW", "Honda", "Toyota", "Tesla"];
   const blueWords = ["TV", "Phone", "Watch", "Monitor"];
   const purpleWords = ["Earings", "Necklace", "Rings", "Anklet"];
 
+  // Combine all answers into one array
   const allWords = [
     ...yellowWords,
     ...greenWords,
@@ -26,18 +31,47 @@ function Connections() {
     ...purpleWords,
   ];
 
+  // Map to keep track of word -> difficulty (Color)
+  let wordMap = new Map<string, number>();
+
+  // Add all words to the wordMap with corresponding number
+  yellowWords.map((word) => {
+    wordMap.set(word, 0);
+  });
+  greenWords.map((word) => {
+    wordMap.set(word, 1);
+  });
+  blueWords.map((word) => {
+    wordMap.set(word, 2);
+  });
+  purpleWords.map((word) => {
+    wordMap.set(word, 3);
+  });
+
+  // Difficulty number maps to color code for complete tile
+  let colorMap = new Map<number, string>();
+  colorMap.set(0, "#f9df6d");
+  colorMap.set(1, "#a0c35a");
+  colorMap.set(2, "#b0c4ef");
+  colorMap.set(3, "#ba81c5");
+
+
+  // Initialize states to set shuffled, selected and found words
   const [shuffledWords, setShuffledWords] = useState<string[]>([]);
   const [selectedWords, setSelectedWords] = useState<boolean[]>(
     new Array(allWords.length).fill(false)
   );
-  const [foundGroups, setFoundGroups] = useState<string[][]>([]); // Tracks found groups
+  const [foundGroups, setFoundGroups] = useState<string[][]>([]);
 
+  // When page is loaded, call initial shuffle on array
   useEffect(() => {
     setShuffledWords(shuffleArray(allWords));
   }, []);
 
+  // Check if selected array matches with any answer arrays
   const checkCorrect = (selected: boolean[]) => {
     const selectedGroup = shuffledWords.filter((_, index) => selected[index]);
+    console.log(JSON.stringify(selectedGroup.sort()));
 
     if (
       JSON.stringify(selectedGroup.sort()) ===
@@ -80,6 +114,7 @@ function Connections() {
     setSelectedWords(new Array(allWords.length).fill(false));
   };
 
+  // Update the selectedWord variable
   const handleTileClick = (index: number) => {
     const updatedSelection = [...selectedWords];
     const isCurrentlySelected = updatedSelection[index];
@@ -88,6 +123,7 @@ function Connections() {
       (isSelected) => isSelected
     ).length;
 
+    // Avoids more than 4 words being selected
     if (!isCurrentlySelected && numSelected >= 4) {
       return;
     }
@@ -100,16 +136,20 @@ function Connections() {
 
   return (
     <div>
-      {/* Render the board */}
-        {foundGroups.length > 0 && (
-          <div className="found-groups">
-            {foundGroups.map((group, index) => (
-              <CompleteTile word={group.join(",")} />
-            ))}
-          </div>
-        )} 
-      <div className="board">
 
+      <div className="found-groups">
+        {foundGroups.length > 0 &&
+          foundGroups.map((group, index) => (
+            <CompleteTile
+              key={index}
+              word={group.join(", ")}
+              tileColor={colorMap.get(wordMap.get(group[0])!)}
+            />
+          ))}
+      </div>
+
+
+      <div className="board">
         {shuffledWords.map((word, index) => (
           <Tile
             key={index}
@@ -118,18 +158,21 @@ function Connections() {
             onClick={() => handleTileClick(index)}
           />
         ))}
+      </div>
 
+      <div className="button-container">
         <Button
           text="Shuffle"
           className="check-button"
           onClick={() => {
-            //   setSelectedWords([]);
+            setSelectedWords([]);
             setShuffledWords(shuffleArray(shuffledWords));
           }}
         />
+
         <Button
           text="Deselect All"
-          className="check-button"
+          className="check-button deselect-button"
           onClick={() => {
             setSelectedWords([]);
           }}
@@ -138,6 +181,7 @@ function Connections() {
             pointerEvents: numSelected === 0 ? "none" : "auto",
           }}
         />
+
         <Button
           text="Submit"
           className="check-button"
@@ -148,6 +192,7 @@ function Connections() {
             opacity: numSelected === 4 ? 1 : 0.5,
             pointerEvents: numSelected === 4 ? "auto" : "none",
           }}
+
         />
       </div>
     </div>

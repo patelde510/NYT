@@ -1,34 +1,54 @@
 .board {
-    padding-top: 10%;
     display: grid;
-    grid-template-columns: repeat(4, 130px);
+    grid-template-columns: repeat(4, 120px);
+    gap: 10px;
     justify-content: center;
     align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
 }
 
 .check-button {
-    width: auto;
+    width: 100px;
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: white;
     color: black;
     border-color: black;
     border-width: 1px;
-    border-radius: 10px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deselect-button {
+    width: 130px;
 }
 
 .check-button:hover {
-    background-color: rgb(70, 69, 60);
+    background-color: rgb(167, 166, 165);
 }
 
 .found-groups {
+    margin-top: 180px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Add spacing between group boxes */
-    margin-bottom: 20px; /* Add spacing below the found groups */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
   
 .found-group {

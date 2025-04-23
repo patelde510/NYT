@@ -1,16 +1,24 @@
-import React from 'react';
-import "./css/CompleteTile.css"
+import React from "react";
+import "./css/CompleteTile.css";
 
 interface CompleteTileProps {
-    word: string;
+  word: string;
+  tileColor: string | undefined;
 }
 
-const CompleteTile: React.FC<CompleteTileProps> = ({ word }) => {
-    return (
-        <button disabled className="complete">
-            {word}
-        </button>
-    );
+const CompleteTile: React.FC<CompleteTileProps> = ({
+  word,
+  tileColor,
+}: CompleteTileProps) => {
+  return (
+    <button
+      disabled
+      className="complete"
+      style={{ backgroundColor: tileColor }} // Apply the color dynamically
+    >
+      {word}
+    </button>
+  );
 };
 
 export default CompleteTile;
