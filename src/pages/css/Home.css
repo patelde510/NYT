@@ -1,0 +1,66 @@
+.container {
+    background-color: rgb(197, 197, 197);
+    padding: 10px;
+    padding-left: 25%;
+    padding-right: 25%;
+    grid-template-columns: repeat(1, 1fr);
+    display:grid;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        flex-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+.image {
+    padding-top: 10%;
+    width: 60px;
+    height: auto;
+}
+
+.strands-image {
+    padding-top: 5%;
+    width: 80px;
+    height: auto;
+}
+
+.card {
+    width: 300px;
+    height: 40vh;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text {
+    margin-top: 5%;
+    font-size: 40px;
+}
+
+.connections-color {
+    background: linear-gradient(to bottom, rgb(179, 167, 254) 70%, #fff 30%);
+}
+
+.wordle-color {
+    background: linear-gradient(to bottom, #e3e3e1 70%, #fff 30%);
+}
+
+.sudoku-color {
+    background: linear-gradient(to bottom, rgb(251, 155, 0) 70%, #fff 30%);
+}
+
+.strands-color {
+    background: linear-gradient(to bottom, rgb(192, 221, 217) 70%, #fff 30%);
+}
+

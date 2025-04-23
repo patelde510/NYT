@@ -1,0 +1,45 @@
+.connections-page {
+    background-color: rgb(179, 167, 254);
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.connections-page .title {
+    font-size: 3rem;
+    color: black;
+    text-align: center;
+    font-family: "Bookman, URW Bookman L, serif";
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+}
+
+.connections-page .description {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 0;
+}
+
+.connections-page .button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 18px 55px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.connections-page .button:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.connections-image {
+    width: 80px;
+    height: auto;
+}
