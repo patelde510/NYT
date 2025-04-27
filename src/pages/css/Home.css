@@ -1,5 +1,4 @@
 .container {
-    background-color: rgb(197, 197, 197);
     padding: 10px;
     padding-left: 25%;
     padding-right: 25%;
@@ -59,8 +58,3 @@
 .sudoku-color {
     background: linear-gradient(to bottom, rgb(251, 155, 0) 70%, #fff 30%);
 }
-
-.strands-color {
-    background: linear-gradient(to bottom, rgb(192, 221, 217) 70%, #fff 30%);
-}
-

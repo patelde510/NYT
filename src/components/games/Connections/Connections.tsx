@@ -135,7 +135,7 @@ function Connections() {
   const numSelected = selectedWords.filter((isSelected) => isSelected).length;
 
   return (
-    <div>
+    <div className="game-box">
 
       <div className="found-groups">
         {foundGroups.length > 0 &&

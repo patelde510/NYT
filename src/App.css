@@ -1,0 +1,6 @@
+.main-page {
+    background-color: rgb(197, 197, 197);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}

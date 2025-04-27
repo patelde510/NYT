@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import connectionsImage from "./assets/connections.png"
 import wordleImage from "./assets/wordle.png"
 import sudokuImage from "./assets/sudoku.png"
-import strandsImage from "./assets/strands.png"
 
 function Home () {
     const navigate = useNavigate();
@@ -36,15 +35,6 @@ function Home () {
                 gameImage={sudokuImage}
                 imageStyle="image"
                 cardStyle="card sudoku-color"
-                textStyle="card-text"
-            />
-            <GameCard
-                text="Strands"
-                navigateButton={() => navigate("/strands")}
-                buttonText="Play"
-                gameImage={strandsImage}
-                imageStyle="strands-image"
-                cardStyle="card strands-color"
                 textStyle="card-text"
             />
             {/* Add more games here later */}
